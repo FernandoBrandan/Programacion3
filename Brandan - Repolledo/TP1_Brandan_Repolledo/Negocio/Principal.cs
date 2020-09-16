@@ -33,11 +33,19 @@ namespace Negocio
                 dgvPrincipal.Columns[4].Visible = false;
                 dgvPrincipal.Columns[5].Visible = false;
                 dgvPrincipal.Columns[6].Visible = false;
+                dgvPrincipal.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAgregar Agregar = new frmAgregar();
+            Agregar.ShowDialog();
         }
     }
 }
