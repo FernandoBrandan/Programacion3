@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -46,6 +47,17 @@ namespace Negocio
         {
             frmAgregar Agregar = new frmAgregar();
             Agregar.ShowDialog();
+            MessageBox.Show("Agregado correctamente");
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo modificar;
+            modificar =(Articulo)grillaArticulos.CurrentRow.DataBoundItem;
+            frmAgregar formularioModificar = new frmAgregar(modificar);
+            formularioModificar.ShowDialog();
+            MessageBox.Show("Modificado Correctamente");
+
         }
     }
 }
