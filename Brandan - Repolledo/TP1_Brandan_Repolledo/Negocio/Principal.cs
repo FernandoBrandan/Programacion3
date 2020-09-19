@@ -52,11 +52,28 @@ namespace Negocio
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Articulo modificar;
-            modificar =(Articulo)grillaArticulos.CurrentRow.DataBoundItem;
-            frmAgregar formularioModificar = new frmAgregar(modificar);
+           /* Articulo modificar;
+            modificar =(Articulo)dgvPrincipal.CurrentRow.DataBoundItem;
+            frmAgregar formularioModificar = new formularioModificar(modificar);
             formularioModificar.ShowDialog();
-            MessageBox.Show("Modificado Correctamente");
+            MessageBox.Show("Modificado Correctamente");*/
+
+        }
+
+        private void pictureArticulo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Articulo arti = (Articulo)dgvPrincipal.CurrentRow.DataBoundItem;
+                pictureArticulo.Load(arti.ImagenUrl);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+
+
 
         }
     }

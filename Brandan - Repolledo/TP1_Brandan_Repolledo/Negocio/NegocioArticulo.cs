@@ -48,5 +48,18 @@ namespace Negocio
             }
             return ListarArticulos;
         }    
+        public void Modificar(Articulo nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            datos.EjecutarConsulta();
+            try
+            {
+               
+
+            }
+            catch (Exception ex)
+            { }
+
+        }
     }
 }

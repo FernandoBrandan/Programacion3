@@ -34,7 +34,9 @@
             this.tbxFiltro = new System.Windows.Forms.TextBox();
             this.btnDetalle = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
+            this.pictureArticulo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrincipal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvPrincipal
@@ -91,12 +93,24 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             // 
+            // pictureArticulo
+            // 
+            this.pictureArticulo.Location = new System.Drawing.Point(530, 70);
+            this.pictureArticulo.MaximumSize = new System.Drawing.Size(150, 180);
+            this.pictureArticulo.Name = "pictureArticulo";
+            this.pictureArticulo.Size = new System.Drawing.Size(150, 180);
+            this.pictureArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureArticulo.TabIndex = 6;
+            this.pictureArticulo.TabStop = false;
+            this.pictureArticulo.Click += new System.EventHandler(this.pictureArticulo_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
-            this.ClientSize = new System.Drawing.Size(520, 450);
+            this.ClientSize = new System.Drawing.Size(795, 450);
+            this.Controls.Add(this.pictureArticulo);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnDetalle);
             this.Controls.Add(this.tbxFiltro);
@@ -107,6 +121,7 @@
             this.Text = "Principal";
             this.Load += new System.EventHandler(this.Principal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrincipal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,6 +135,7 @@
         private System.Windows.Forms.TextBox tbxFiltro;
         private System.Windows.Forms.Button btnDetalle;
         private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.PictureBox pictureArticulo;
     }
 }
 
