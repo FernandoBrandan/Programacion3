@@ -40,6 +40,7 @@ namespace Negocio
 
             if (articulo !=null)
             {
+                Text = "Modificar Articulo";
                 textBox1.Text = articulo.Codigo;
                 textBox2.Text = articulo.Nombre;
                 textBox3.Text = articulo.Descripcion;
@@ -55,6 +56,38 @@ namespace Negocio
         {
        
 
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (articulo == null)
+            {
+                articulo = new Articulo();
+            }
+            Articulo nuevo = new Articulo();
+            NegocioArticulo negocio = new NegocioArticulo();
+            nuevo.Nombre = textBox1.Text;
+            nuevo.Descripcion = textBox1.Text;
+            nuevo.Categoria = (Categoria)comboBox1.SelectedItem;
+
+            if (articulo.ID == 0)
+            {
+                //negocio.Agregar();
+                MessageBox.Show("Agregado exitosamente", "EXITO");
+            }
+            else
+            {
+                 negocio.Modificar(nuevo);
+                MessageBox.Show("Se ha modificado su registro");
+            }
+           
+
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

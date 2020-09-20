@@ -55,12 +55,9 @@ namespace Negocio
             Articulo arti;
             arti = (Articulo)dgvPrincipal.CurrentRow.DataBoundItem;// traigo el registro actual
 
-
             frmAgregar modificar = new frmAgregar(arti);
             modificar.ShowDialog();
             CargarDatos();
-
-
         }
 
         private void pictureArticulo_Click(object sender, EventArgs e)
@@ -78,6 +75,13 @@ namespace Negocio
 
 
 
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            NegocioArticulo negocio = new NegocioArticulo();
+            negocio.eliminar(((Articulo)dgvPrincipal.CurrentRow.DataBoundItem).ID);
+            CargarDatos();
         }
     }
 }

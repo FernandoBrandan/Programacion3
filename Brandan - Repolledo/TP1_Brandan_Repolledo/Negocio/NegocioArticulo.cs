@@ -48,17 +48,61 @@ namespace Negocio
             }
             return ListarArticulos;
         }    
-        public void Modificar(Articulo nuevo)
+        public void Modificar(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearQuery("Update ARTICULOS Set Codigo=@codigo, Descripcion=@descripcion, IDCategoria=@idCategoria, IDMarca=@idMarca,ImagenURL=@imagenURL, Precio=@precio where ID=@id");
+                datos.AgregarParametro("@codigo", articulo.Codigo);
+                datos.AgregarParametro("@Descripcion", articulo.Descripcion);
+                datos.AgregarParametro("@idCategoria", articulo.Categoria);
+                datos.AgregarParametro("@idMarca", articulo.Marca);
+                datos.AgregarParametro("@imagenURL", articulo.ImagenUrl);
+                datos.AgregarParametro("@precio", articulo.Precio);
+                datos.EjecutarConsulta();
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public void eliminar(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearQuery("Delete from ARTICULOS where ID=@id ");
+                datos.AgregarParametro("@id",id);
+                datos.EjecutarConsulta();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+
+
+        }
+
+        public void Agregar(Articulo nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             datos.EjecutarConsulta();
             try
             {
-               
+
 
             }
             catch (Exception ex)
-            { }
+            {
+                throw ex;
+            }
 
         }
     }

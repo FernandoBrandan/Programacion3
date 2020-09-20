@@ -92,10 +92,11 @@
             this.btnEliminar.TabIndex = 5;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // pictureArticulo
             // 
-            this.pictureArticulo.Location = new System.Drawing.Point(530, 70);
+            this.pictureArticulo.Location = new System.Drawing.Point(537, 61);
             this.pictureArticulo.MaximumSize = new System.Drawing.Size(150, 180);
             this.pictureArticulo.Name = "pictureArticulo";
             this.pictureArticulo.Size = new System.Drawing.Size(150, 180);
