@@ -38,18 +38,7 @@ namespace Negocio
             cbxMarca.DisplayMember = "Descripcion";
             cbxMarca.SelectedIndex = -1;
 
-            if (articulo !=null)
-            {
-                Text = "Modificar Articulo";
-                txtCodigo.Text = articulo.Codigo;
-                txtCodigo.Text = articulo.Nombre;
-                txtDescripcion.Text = articulo.Descripcion;
-                cbxCategoria.SelectedValue = articulo.Categoria;
-                cbxMarca.SelectedValue = articulo.Marca;
-                txtImagenURL.Text = articulo.ImagenUrl;
-               //txtPrecio. = articulo.Precio; FER NO PUEDO TRAER EL PRECIO AYUDA!!!!!
-
-            }
+            
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -60,32 +49,44 @@ namespace Negocio
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (articulo == null)
-            {
-                articulo = new Articulo();
-            }
             Articulo nuevo = new Articulo();
             NegocioArticulo negocio = new NegocioArticulo();
-            nuevo.Nombre = txtCodigo.Text;
-            nuevo.Descripcion = txtNombre.Text;
-            nuevo.Categoria = (Categoria)cbxCategoria.SelectedItem;
-            
-
-            if (articulo.ID == 0)
+            try
             {
-                //negocio.Agregar();
-                MessageBox.Show("Agregado exitosamente", "EXITO");
-            }
-            else
+                if (articulo == null)
+                {
+                    articulo = new Articulo();
+                    nuevo.Codigo = txtCodigo.Text;
+                    nuevo.Nombre = txtNombre.Text;
+                    nuevo.Descripcion = txtDescripcion.Text;
+                    nuevo.Marca = (Marca)cbxMarca.SelectedItem;
+                    nuevo.Categoria = (Categoria)cbxCategoria.SelectedItem;
+                    nuevo.ImagenUrl = txtImagenURL.Text;
+                    nuevo.Precio = Convert.ToDecimal(txtPrecio.Text);
+
+                    if (nuevo.Marca == null || nuevo.Categoria == null)
+                    {
+                        MessageBox.Show("Faltan cargar datos", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Dispose();
+                    }
+                    else
+                    {
+                        negocio.Agregar(nuevo);
+                        Dispose();
+                    }
+                }
+                else
+                {
+                        negocio.Modificar(nuevo);
+                        MessageBox.Show("Se ha modificado su registro");
+                }
+            }  
+            catch (Exception ex)
             {
-                negocio.Modificar(nuevo);
-                MessageBox.Show("Se ha modificado su registro");
+                MessageBox.Show(ex.Message);
             }
-           
-
-
         }
-
+          
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();

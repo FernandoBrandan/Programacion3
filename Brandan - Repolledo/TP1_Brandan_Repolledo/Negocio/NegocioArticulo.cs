@@ -47,7 +47,22 @@ namespace Negocio
                 throw ex;
             }
             return ListarArticulos;
-        }    
+        }
+
+        public void Agregar(Articulo nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            datos.SetearQuery("insert into ARTICULOS (Codigo, Nombre, Descripcion,IdMarca, IdCategoria, ImagenUrl, Precio) values (@Codigo, @Nombre, @Descripcion, @Categoria, @Marca, @ImagenUrl, @Precio);");
+            datos.AgregarParametro("@Codigo", nuevo.Codigo);
+            datos.AgregarParametro("@Nombre", nuevo.Nombre);
+            datos.AgregarParametro("@Descripcion", nuevo.Descripcion);
+            datos.AgregarParametro("@Categoria", nuevo.Categoria.ID);
+            datos.AgregarParametro("@Marca", nuevo.Marca.ID);
+            datos.AgregarParametro("@ImagenUrl", nuevo.ImagenUrl);
+            datos.AgregarParametro("@Precio", nuevo.Precio);
+            datos.EjecutarConsulta();
+        }
+
         public void Modificar(Articulo articulo)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -81,20 +96,6 @@ namespace Negocio
             {
                 throw ex;
             }
-        }
-
-        public void Agregar(Articulo nuevo)
-        {
-            AccesoDatos datos = new AccesoDatos();
-           
-            try
-            {
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
+        }  
     }
 }

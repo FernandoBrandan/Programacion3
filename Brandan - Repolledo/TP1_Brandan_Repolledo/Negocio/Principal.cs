@@ -49,7 +49,7 @@ namespace Negocio
         {
             frmAgregar Agregar = new frmAgregar();
             Agregar.ShowDialog();
-            MessageBox.Show("Agregado correctamente");
+           // MessageBox.Show("Agregado correctamente");
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
