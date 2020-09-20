@@ -61,16 +61,11 @@ namespace Negocio
                 datos.AgregarParametro("@imagenURL", articulo.ImagenUrl);
                 datos.AgregarParametro("@precio", articulo.Precio);
                 datos.EjecutarConsulta();
-
-
-
-
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
         }
 
         public void eliminar(int id)
@@ -86,18 +81,14 @@ namespace Negocio
             {
                 throw ex;
             }
-
-
         }
 
         public void Agregar(Articulo nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
-            datos.EjecutarConsulta();
+           
             try
             {
-
-
             }
             catch (Exception ex)
             {

@@ -35,6 +35,7 @@
             this.btnDetalle = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.pictureArticulo = new System.Windows.Forms.PictureBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrincipal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureArticulo)).BeginInit();
             this.SuspendLayout();
@@ -69,11 +70,12 @@
             // 
             // tbxFiltro
             // 
-            this.tbxFiltro.Location = new System.Drawing.Point(12, 70);
+            this.tbxFiltro.Location = new System.Drawing.Point(12, 61);
             this.tbxFiltro.Name = "tbxFiltro";
-            this.tbxFiltro.Size = new System.Drawing.Size(497, 20);
+            this.tbxFiltro.Size = new System.Drawing.Size(310, 20);
             this.tbxFiltro.TabIndex = 3;
             this.tbxFiltro.Text = "Busqueda";
+            this.tbxFiltro.TextChanged += new System.EventHandler(this.tbxFiltro_TextChanged);
             // 
             // btnDetalle
             // 
@@ -100,10 +102,20 @@
             this.pictureArticulo.MaximumSize = new System.Drawing.Size(150, 180);
             this.pictureArticulo.Name = "pictureArticulo";
             this.pictureArticulo.Size = new System.Drawing.Size(150, 180);
-            this.pictureArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureArticulo.TabIndex = 6;
             this.pictureArticulo.TabStop = false;
             this.pictureArticulo.Click += new System.EventHandler(this.pictureArticulo_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(344, 61);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(100, 20);
+            this.btnBuscar.TabIndex = 7;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // Principal
             // 
@@ -111,6 +123,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
             this.ClientSize = new System.Drawing.Size(795, 450);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.pictureArticulo);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnDetalle);
@@ -137,6 +150,7 @@
         private System.Windows.Forms.Button btnDetalle;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.PictureBox pictureArticulo;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }
 

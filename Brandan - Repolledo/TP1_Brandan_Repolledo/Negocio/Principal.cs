@@ -14,6 +14,7 @@ namespace Negocio
 {
     public partial class Principal : Form
     {
+        private List<Articulo> listaOriginal;
         public Principal()
         {
             InitializeComponent();
@@ -28,8 +29,9 @@ namespace Negocio
         {
             try
             {
-                NegocioArticulo ListadoArticulos = new NegocioArticulo();
-                dgvPrincipal.DataSource = ListadoArticulos.ListarArticulos();
+                NegocioArticulo listadoArticulos = new NegocioArticulo();
+                listaOriginal = listadoArticulos.ListarArticulos();
+                dgvPrincipal.DataSource = listadoArticulos.ListarArticulos();
                 dgvPrincipal.Columns[0].Visible = false;
                 dgvPrincipal.Columns[4].Visible = false;
                 dgvPrincipal.Columns[5].Visible = false;
@@ -69,7 +71,7 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
 
@@ -82,6 +84,20 @@ namespace Negocio
             NegocioArticulo negocio = new NegocioArticulo();
             negocio.eliminar(((Articulo)dgvPrincipal.CurrentRow.DataBoundItem).ID);
             CargarDatos();
+            MessageBox.Show("Se ha eliminado el registro");
+        }
+
+        private void tbxFiltro_TextChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            //List<Articulo> lista = (List<Articulo>)dgvPrincipal.DataSource;
+            List<Articulo> listaFiltrada = listaOriginal.FindAll(x => x.Nombre.ToUpper().Contains(tbxFiltro.Text.ToUpper()));
+            dgvPrincipal.DataSource = listaFiltrada;
+
         }
     }
 }
