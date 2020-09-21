@@ -15,6 +15,7 @@ namespace Negocio
     public partial class Principal : Form
     {
         private List<Articulo> listaOriginal;
+
         public Principal()
         {
             InitializeComponent();
@@ -49,55 +50,91 @@ namespace Negocio
         {
             frmAgregar Agregar = new frmAgregar();
             Agregar.ShowDialog();
-           // MessageBox.Show("Agregado correctamente");
+            CargarDatos();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Articulo arti;
-            arti = (Articulo)dgvPrincipal.CurrentRow.DataBoundItem;// traigo el registro actual
-
-            frmAgregar modificar = new frmAgregar(arti);
+            Articulo ModificaArticulo;
+            ModificaArticulo = (Articulo)dgvPrincipal.CurrentRow.DataBoundItem;// traigo el registro actual
+            frmAgregar modificar = new frmAgregar(ModificaArticulo);
+            modificar.Text = "Modificar";
             modificar.ShowDialog();
             CargarDatos();
-        }
-
-        private void pictureArticulo_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Articulo arti = (Articulo)dgvPrincipal.CurrentRow.DataBoundItem;
-                pictureArticulo.Load(arti.ImagenUrl);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-
-
-
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             NegocioArticulo negocio = new NegocioArticulo();
-            negocio.eliminar(((Articulo)dgvPrincipal.CurrentRow.DataBoundItem).ID);
+            if (MessageBox.Show("Eliminar", "¿Seguro desea eliminar el registro?", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                CargarDatos();
+            }
+            else
+            { 
+                negocio.eliminar(((Articulo)dgvPrincipal.CurrentRow.DataBoundItem).ID);
+                CargarDatos();
+                MessageBox.Show("Se ha eliminado el registro");
+            }
+        }
+
+        private void tbxBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> ListaFiltrada;
+            NegocioArticulo ListaArticulos = new NegocioArticulo();
+            listaOriginal = ListaArticulos.ListarArticulos();
+            
+            try
+            {
+                if (tbxBusqueda.Text == "")
+                {
+                    dgvPrincipal.DataSource = listaOriginal;
+                    ListaFiltrada = listaOriginal;
+                }
+                else
+                {
+                 //   ListaFiltrada = listaOriginal.FindAll(x => x.Nombre.ToUpper().Contains(tbxBusqueda.Text.ToUpper()));
+                    ListaFiltrada = listaOriginal.FindAll(Y => Y.Descripcion.ToLower().Contains(tbxBusqueda.Text.ToLower()) || Y.Nombre.ToLower().Contains(tbxBusqueda.Text.ToLower()) || Y.Codigo.ToLower().Contains(tbxBusqueda.Text.ToLower()));
+
+                    dgvPrincipal.DataSource = listaOriginal;
+                }
+                dgvPrincipal.DataSource = ListaFiltrada;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void cbxFiltro_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbxFiltro.Checked == true)
+            {
+                tbxBusqueda.Enabled = true;
+            }    
+            else
+            {
+                tbxBusqueda.Enabled = false;
+            }    
+        }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+            Articulo DetalleArticulo;
+            DetalleArticulo = (Articulo)dgvPrincipal.CurrentRow.DataBoundItem;// traigo el registro actual
+
+            frmDetalle Detalle = new frmDetalle(DetalleArticulo);
+            Detalle.ShowDialog();
             CargarDatos();
-            MessageBox.Show("Se ha eliminado el registro");
         }
+        /*
+private void btnBuscar_Click(object sender, EventArgs e)
+{
+//List<Articulo> lista = (List<Articulo>)dgvPrincipal.DataSource;
+List<Articulo> listaFiltrada = listaOriginal.FindAll(x => x.Nombre.ToUpper().Contains(tbxFiltro.Text.ToUpper()));
+dgvPrincipal.DataSource = listaFiltrada;
+}*/
 
-        private void tbxFiltro_TextChanged(object sender, EventArgs e)
-        {
-          
-        }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            //List<Articulo> lista = (List<Articulo>)dgvPrincipal.DataSource;
-            List<Articulo> listaFiltrada = listaOriginal.FindAll(x => x.Nombre.ToUpper().Contains(tbxFiltro.Text.ToUpper()));
-            dgvPrincipal.DataSource = listaFiltrada;
-
-        }
     }
 }

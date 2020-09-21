@@ -31,13 +31,11 @@
             this.dgvPrincipal = new System.Windows.Forms.DataGridView();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.tbxFiltro = new System.Windows.Forms.TextBox();
+            this.tbxBusqueda = new System.Windows.Forms.TextBox();
             this.btnDetalle = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.pictureArticulo = new System.Windows.Forms.PictureBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
+            this.cbxFiltro = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrincipal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvPrincipal
@@ -68,14 +66,14 @@
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
-            // tbxFiltro
+            // tbxBusqueda
             // 
-            this.tbxFiltro.Location = new System.Drawing.Point(12, 61);
-            this.tbxFiltro.Name = "tbxFiltro";
-            this.tbxFiltro.Size = new System.Drawing.Size(310, 20);
-            this.tbxFiltro.TabIndex = 3;
-            this.tbxFiltro.Text = "Busqueda";
-            this.tbxFiltro.TextChanged += new System.EventHandler(this.tbxFiltro_TextChanged);
+            this.tbxBusqueda.Enabled = false;
+            this.tbxBusqueda.Location = new System.Drawing.Point(66, 70);
+            this.tbxBusqueda.Name = "tbxBusqueda";
+            this.tbxBusqueda.Size = new System.Drawing.Size(440, 20);
+            this.tbxBusqueda.TabIndex = 3;
+            this.tbxBusqueda.TextChanged += new System.EventHandler(this.tbxBusqueda_TextChanged);
             // 
             // btnDetalle
             // 
@@ -85,6 +83,7 @@
             this.btnDetalle.TabIndex = 4;
             this.btnDetalle.Text = "Detalle";
             this.btnDetalle.UseVisualStyleBackColor = true;
+            this.btnDetalle.Click += new System.EventHandler(this.btnDetalle_Click);
             // 
             // btnEliminar
             // 
@@ -96,46 +95,37 @@
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // pictureArticulo
+            // cbxFiltro
             // 
-            this.pictureArticulo.Location = new System.Drawing.Point(537, 61);
-            this.pictureArticulo.MaximumSize = new System.Drawing.Size(150, 180);
-            this.pictureArticulo.Name = "pictureArticulo";
-            this.pictureArticulo.Size = new System.Drawing.Size(150, 180);
-            this.pictureArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureArticulo.TabIndex = 6;
-            this.pictureArticulo.TabStop = false;
-            this.pictureArticulo.Click += new System.EventHandler(this.pictureArticulo_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Location = new System.Drawing.Point(344, 61);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(100, 20);
-            this.btnBuscar.TabIndex = 7;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.cbxFiltro.AutoSize = true;
+            this.cbxFiltro.Location = new System.Drawing.Point(12, 70);
+            this.cbxFiltro.Name = "cbxFiltro";
+            this.cbxFiltro.Size = new System.Drawing.Size(48, 17);
+            this.cbxFiltro.TabIndex = 7;
+            this.cbxFiltro.Text = "Filtro";
+            this.cbxFiltro.UseVisualStyleBackColor = true;
+            this.cbxFiltro.CheckedChanged += new System.EventHandler(this.cbxFiltro_CheckedChanged);
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
-            this.ClientSize = new System.Drawing.Size(795, 450);
-            this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.pictureArticulo);
+            this.ClientSize = new System.Drawing.Size(522, 449);
+            this.Controls.Add(this.cbxFiltro);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnDetalle);
-            this.Controls.Add(this.tbxFiltro);
+            this.Controls.Add(this.tbxBusqueda);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.dgvPrincipal);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Principal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
             this.Load += new System.EventHandler(this.Principal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrincipal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,11 +136,10 @@
         private System.Windows.Forms.DataGridView dgvPrincipal;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.TextBox tbxFiltro;
+        private System.Windows.Forms.TextBox tbxBusqueda;
         private System.Windows.Forms.Button btnDetalle;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.PictureBox pictureArticulo;
-        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.CheckBox cbxFiltro;
     }
 }
 

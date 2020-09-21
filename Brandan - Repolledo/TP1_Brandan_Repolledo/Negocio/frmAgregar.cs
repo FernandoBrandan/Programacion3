@@ -30,21 +30,35 @@ namespace Negocio
             cbxCategoria.DataSource = negocioCategoria.ListarCategoria();
             NegocioMarca negocioMarca = new NegocioMarca();
             cbxMarca.DataSource = negocioMarca.ListarMarca();
-             
-            cbxCategoria.ValueMember = "ID";
-            cbxCategoria.DisplayMember = "Descripcion";
-            cbxCategoria.SelectedIndex = -1;
-            cbxMarca.ValueMember = "ID";
-            cbxMarca.DisplayMember = "Descripcion";
-            cbxMarca.SelectedIndex = -1;
 
-            
-        }
+            try
+            {
+                cbxCategoria.ValueMember = "ID";
+                cbxCategoria.DisplayMember = "Descripcion";
+                cbxCategoria.SelectedIndex = -1;
+                cbxMarca.ValueMember = "ID";
+                cbxMarca.DisplayMember = "Descripcion";
+                cbxMarca.SelectedIndex = -1;
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-       
+                if (articulo != null)
+                {
+                    txtCodigo.Text = articulo.Codigo;
+                    txtNombre.Text = articulo.Nombre;
+                    txtDescripcion.Text = articulo.Descripcion;
+                    cbxCategoria.SelectedValue = articulo.Categoria.ID;
+                    cbxMarca.SelectedValue = articulo.Marca.ID;
+                    txtImagenURL.Text = articulo.ImagenUrl;
+                    txtPrecio.Text = articulo.Precio.ToString();                    
+                }
 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+                   
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -53,9 +67,25 @@ namespace Negocio
             NegocioArticulo negocio = new NegocioArticulo();
             try
             {
+                if (articulo != null)
+                {
+                    nuevo.ID = articulo.ID;
+                    nuevo.Codigo = txtCodigo.Text;
+                    nuevo.Nombre = txtNombre.Text;
+                    nuevo.Descripcion = txtDescripcion.Text;
+                    nuevo.Marca = (Marca)cbxMarca.SelectedItem;
+                    nuevo.Categoria = (Categoria)cbxCategoria.SelectedItem;
+                    nuevo.ImagenUrl = txtImagenURL.Text;
+                    nuevo.Precio = Convert.ToDecimal(txtPrecio.Text);
+                    negocio.Modificar(nuevo);
+                    MessageBox.Show("Se ha modificado su registro");
+                    Dispose();
+                }
+
                 if (articulo == null)
                 {
                     articulo = new Articulo();
+
                     nuevo.Codigo = txtCodigo.Text;
                     nuevo.Nombre = txtNombre.Text;
                     nuevo.Descripcion = txtDescripcion.Text;
@@ -66,19 +96,25 @@ namespace Negocio
 
                     if (nuevo.Marca == null || nuevo.Categoria == null)
                     {
-                        MessageBox.Show("Faltan cargar datos", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Faltan elegir datos", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Dispose();
                     }
                     else
                     {
-                        negocio.Agregar(nuevo);
-                        Dispose();
+                        if(nuevo.Codigo == "" ||
+                            nuevo.Nombre == "" ||
+                            nuevo.Descripcion == "" ||
+                            nuevo.ImagenUrl == "")
+                        {
+                            MessageBox.Show("Faltan cargar datos", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Dispose();
+                        }    
+                        else
+                        {
+                            negocio.Agregar(nuevo);
+                            Dispose();
+                        }
                     }
-                }
-                else
-                {
-                        negocio.Modificar(nuevo);
-                        MessageBox.Show("Se ha modificado su registro");
                 }
             }  
             catch (Exception ex)

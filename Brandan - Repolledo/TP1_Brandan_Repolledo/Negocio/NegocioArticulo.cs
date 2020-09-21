@@ -68,13 +68,15 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.SetearQuery("Update ARTICULOS Set Codigo=@codigo, Descripcion=@descripcion, IDCategoria=@idCategoria, IDMarca=@idMarca,ImagenURL=@imagenURL, Precio=@precio where ID=@id");
+                datos.SetearQuery("Update ARTICULOS Set Codigo=@codigo, Nombre=@Nombre, Descripcion=@Descripcion, IDCategoria=@idCategoria, IDMarca=@idMarca,ImagenURL=@imagenURL, Precio=@precio where ID=@id");
                 datos.AgregarParametro("@codigo", articulo.Codigo);
+                datos.AgregarParametro("@Nombre", articulo.Nombre);
                 datos.AgregarParametro("@Descripcion", articulo.Descripcion);
-                datos.AgregarParametro("@idCategoria", articulo.Categoria);
-                datos.AgregarParametro("@idMarca", articulo.Marca);
+                datos.AgregarParametro("@idCategoria", articulo.Categoria.ID);
+                datos.AgregarParametro("@idMarca", articulo.Marca.ID);
                 datos.AgregarParametro("@imagenURL", articulo.ImagenUrl);
                 datos.AgregarParametro("@precio", articulo.Precio);
+                datos.AgregarParametro("@id", articulo.ID);
                 datos.EjecutarConsulta();
             }
             catch (Exception ex)
