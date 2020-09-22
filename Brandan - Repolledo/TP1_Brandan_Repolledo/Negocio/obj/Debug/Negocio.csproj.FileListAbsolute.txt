@@ -27,3 +27,4 @@ C:\Users\wendy\Documents\github\Programacion3\Brandan - Repolledo\TP1_Brandan_Re
 C:\Users\wendy\Documents\github\Programacion3\Brandan - Repolledo\TP1_Brandan_Repolledo\Negocio\bin\Debug\Dominio.pdb
 C:\Users\wendy\Documents\github\Programacion3\Brandan - Repolledo\TP1_Brandan_Repolledo\Negocio\obj\Debug\Negocio.csproj.CopyComplete
 C:\Users\ferna\Desktop\GitHub\Programacion3\Brandan - Repolledo\TP1_Brandan_Repolledo\Negocio\obj\Debug\Negocio.frmDetalle.resources
+C:\Users\wendy\Documents\GitHub\Programacion3\Brandan - Repolledo\TP1_Brandan_Repolledo\Negocio\obj\Debug\Negocio.frmDetalle.resources

@@ -28,8 +28,35 @@ namespace Negocio
 
         private void frmDetalle_Load(object sender, EventArgs e)
         {
-            lbNombre.Text = articulo.Nombre;
+            // lblCodigo.Text = articulo.Codigo;
+            txtCodigo.Text = articulo.Codigo;
+            txtNombre.Text = articulo.Nombre;
+            txtDescripcion.Text = articulo.Descripcion;
+            txtCategoria.Text = articulo.Categoria.Descripcion;
+            txtMarca.Text = articulo.Marca.Descripcion;
+            txtPrecio.Text = articulo.Precio.ToString();
+
             pbxImagen.Load(articulo.ImagenUrl);
+        }
+
+        private void lbNombre_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCodigo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCodigo_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

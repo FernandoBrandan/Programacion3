@@ -40,9 +40,11 @@
             // 
             // dgvPrincipal
             // 
+            this.dgvPrincipal.BackgroundColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.dgvPrincipal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrincipal.Location = new System.Drawing.Point(12, 150);
             this.dgvPrincipal.Name = "dgvPrincipal";
+            this.dgvPrincipal.ReadOnly = true;
             this.dgvPrincipal.Size = new System.Drawing.Size(497, 288);
             this.dgvPrincipal.TabIndex = 0;
             // 
