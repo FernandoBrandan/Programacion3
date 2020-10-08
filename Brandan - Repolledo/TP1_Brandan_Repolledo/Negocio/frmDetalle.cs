@@ -37,6 +37,7 @@ namespace Negocio
             txtPrecio.Text = articulo.Precio.ToString();
 
             pbxImagen.Load(articulo.ImagenUrl);
+            
         }
 
         private void lbNombre_Click(object sender, EventArgs e)

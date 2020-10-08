@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -127,6 +128,9 @@ namespace Negocio
             Detalle.ShowDialog();
             CargarDatos();
         }
+
+
+
         /*
 private void btnBuscar_Click(object sender, EventArgs e)
 {

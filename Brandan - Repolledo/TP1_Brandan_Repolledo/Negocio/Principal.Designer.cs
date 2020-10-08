@@ -28,25 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvPrincipal = new System.Windows.Forms.DataGridView();
+            this.components = new System.ComponentModel.Container();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.tbxBusqueda = new System.Windows.Forms.TextBox();
             this.btnDetalle = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.cbxFiltro = new System.Windows.Forms.CheckBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.dgvPrincipal = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrincipal)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvPrincipal
-            // 
-            this.dgvPrincipal.BackgroundColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgvPrincipal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrincipal.Location = new System.Drawing.Point(12, 150);
-            this.dgvPrincipal.Name = "dgvPrincipal";
-            this.dgvPrincipal.ReadOnly = true;
-            this.dgvPrincipal.Size = new System.Drawing.Size(497, 288);
-            this.dgvPrincipal.TabIndex = 0;
             // 
             // btnAgregar
             // 
@@ -108,6 +100,19 @@
             this.cbxFiltro.UseVisualStyleBackColor = true;
             this.cbxFiltro.CheckedChanged += new System.EventHandler(this.cbxFiltro_CheckedChanged);
             // 
+            // timer1
+            // 
+            // 
+            // dgvPrincipal
+            // 
+            this.dgvPrincipal.BackgroundColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvPrincipal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPrincipal.Location = new System.Drawing.Point(12, 150);
+            this.dgvPrincipal.Name = "dgvPrincipal";
+            this.dgvPrincipal.ReadOnly = true;
+            this.dgvPrincipal.Size = new System.Drawing.Size(497, 288);
+            this.dgvPrincipal.TabIndex = 0;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -134,14 +139,14 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvPrincipal;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.TextBox tbxBusqueda;
         private System.Windows.Forms.Button btnDetalle;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.CheckBox cbxFiltro;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.DataGridView dgvPrincipal;
     }
 }
 
