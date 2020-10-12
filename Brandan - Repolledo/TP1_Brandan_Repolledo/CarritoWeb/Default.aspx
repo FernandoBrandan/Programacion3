@@ -11,16 +11,16 @@
 
     <%foreach (Dominio.Articulo item in ListadeArticulos)
         {%>
-          <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+          <div class="card" style="width: 28rem;">
+                <img src="<% = item.ImagenUrl%>" "class="card-img-top" alt="...">
                     <div class="card-body">
-                   <h5 class="card-title">Card title</h5>
-                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+                   <h5 class="card-title"><% =item.Nombre  %></h5>
+                 <p class="card-text"><%=item.Descripcion %></p>
+                 <p class="card-text"><%=item.Precio %></p>
+              <a href="#" class="btn btn-primary">Agregar al carrito</a>
            </div>
           </div>
-       <% }
-     %>
+       <% }  %>
     
     
 </div>
