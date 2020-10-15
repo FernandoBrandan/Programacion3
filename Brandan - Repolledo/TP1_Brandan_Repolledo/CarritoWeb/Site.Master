@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CarritoWeb.SiteMaster" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CarritoWeb.SiteMaster" %>
 
 <!DOCTYPE html>
 
@@ -51,16 +51,13 @@
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Inicio</a>
+                    <a class="navbar-brand" runat="server" href="~/Default">Inicio</a>
+                    <a class="navbar-brand" runat="server" href="~/About">Acerca de </a>
+                    <a class="navbar-brand" runat="server" href="~/Contact">Contacto</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/About">Acerca de</a></li>
-                        <li><a runat="server" href="~/Contact">Contacto</a></li>
-                    </ul>
+
                 </div>
             </div>
         </div>
