@@ -5,7 +5,6 @@
     <div class="jumbotron">
         <h1>TECH STORE</h1>
         <p class="lead">Bienvenidos a la tienda mas grande de zona Norte</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
     </div>
    
 
@@ -17,13 +16,12 @@
                    <h5 class="card-title"><% =item.Nombre  %></h5>
                  <p class="card-text"><%=item.Descripcion %></p>
                  <p class="card-text"><%=item.Precio %></p>
-              <a href="#" class="btn btn-primary">Agregar al carrito</a>
+              <a href="AgregarArt.aspx" class="btn btn-primary">Agregar</a>
+              <a href="DetalleArt.aspx?idAr =<% =item.ID.ToString() %>" class="btn btn-primary">Detalle</a>
            </div>
           </div>
        <% }  %>
     
-    
-</div>
-
+  
 
 </asp:Content>
