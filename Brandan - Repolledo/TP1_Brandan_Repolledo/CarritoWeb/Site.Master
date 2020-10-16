@@ -46,17 +46,13 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-inverse navbar-fixed-top ">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                    </button>
+                <div class="navbar-header collapse navbar-collapse">
+   
                     <a class="navbar-brand" runat="server" href="~/Default">Inicio</a>
                     <a class="navbar-brand" runat="server" href="~/About">Acerca de </a>
                     <a class="navbar-brand" runat="server" href="~/Contact">Contacto</a>
-                </div>
-                <div class="navbar-collapse collapse">
                 </div>
             </div>
         </div>
