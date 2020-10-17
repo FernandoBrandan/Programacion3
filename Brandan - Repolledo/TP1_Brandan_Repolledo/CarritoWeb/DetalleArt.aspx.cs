@@ -16,15 +16,17 @@ namespace CarritoWeb
         {
             NegocioArticulo negocio = new NegocioArticulo();
             List<Articulo> listarArticulo;
+            listarArticulo = negocio.ListarArticulos();
             try
             {
-                listarArticulo = negocio.ListarArticulos();
-                int articuloSeleccionado = Convert.ToInt32(Request.QueryString["idAr"]);
-                articulo = listarArticulo.Find(x => x.ID == articuloSeleccionado);
+                 int articuloSeleccionado = Convert.ToInt32(Request.QueryString["idAr"]);
+                 //int articuloSeleccionado = Convert.ToInt32(Session["id: " + Session.SessionID]);
+                 articulo = listarArticulo.Find(x => x.ID == articuloSeleccionado);
 
             }
-            catch(Exception)
+            catch(Exception ex)
             {
+                Session["Error" + Session.SessionID] = ex;
                 Response.Redirect("Error.aspx");
             }
         }
