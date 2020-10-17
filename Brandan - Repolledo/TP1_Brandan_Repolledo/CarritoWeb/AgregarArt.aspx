@@ -10,9 +10,16 @@
 <body>
     <form id="form1" runat="server">
         <div class="card">
-            
+             
 
+            <h1>hola</h1>
+            <asp:TextBox id="txtArticulo" runat ="server" />
+            <asp:HyperLink ID="HyperLink1" runat="server">HyperLink</asp:HyperLink>
 
+     
+            <asp:GridView id="dvListado" runat="server">   </asp:GridView>
+
+          
         </div>
     </form>
 </body>
