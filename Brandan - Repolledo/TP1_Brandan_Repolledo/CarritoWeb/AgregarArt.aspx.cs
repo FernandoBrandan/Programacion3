@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 using Dominio;
 using Negocio;
 
+
+
 namespace CarritoWeb
 {
     public partial class AgregarArt : System.Web.UI.Page
@@ -32,7 +34,7 @@ namespace CarritoWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-         
+
             List<Articulo> Busqueda;
             NegocioArticulo BuscarArticulo = new NegocioArticulo();
             Busqueda = BuscarArticulo.ListarArticulos();

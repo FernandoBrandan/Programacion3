@@ -1,18 +1,7 @@
-﻿<%@ Page Language="C#"  AutoEventWireup="true" CodeBehind="AgregarArt.aspx.cs" Inherits="CarritoWeb.AgregarArt" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgregarArt.aspx.cs" Inherits="CarritoWeb.AgregarArt" %>
 
-<!DOCTYPE html>
 
-<html class="row justify-content-md-center"">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-       
-            <asp:GridView id="dvListado" runat="server" >   </asp:GridView>
-
-     
-    </form>
-</body>
-</html>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+  
+            <asp:GridView id="dvListado" runat="server" class="table table-sm">   </asp:GridView>
+</asp:Content>

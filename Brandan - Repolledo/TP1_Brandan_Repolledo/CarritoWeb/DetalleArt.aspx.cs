@@ -19,12 +19,12 @@ namespace CarritoWeb
             listarArticulo = negocio.ListarArticulos();
             try
             {
-                 int articuloSeleccionado = Convert.ToInt32(Request.QueryString["idAr"]);
-                 //int articuloSeleccionado = Convert.ToInt32(Session["id: " + Session.SessionID]);
-                 articulo = listarArticulo.Find(x => x.ID == articuloSeleccionado);
+                int articuloSeleccionado = Convert.ToInt32(Request.QueryString["idAr"]);
+                //int articuloSeleccionado = Convert.ToInt32(Session["id: " + Session.SessionID]);
+                articulo = listarArticulo.Find(x => x.ID == articuloSeleccionado);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Session["Error" + Session.SessionID] = ex;
                 Response.Redirect("Error.aspx");

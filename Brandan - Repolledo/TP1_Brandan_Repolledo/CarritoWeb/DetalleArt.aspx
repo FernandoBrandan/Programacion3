@@ -1,11 +1,6 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DetalleArt.aspx.cs" Inherits="CarritoWeb.DetalleArt" %>
-
-<!DOCTYPE html>
-
-<html>
-<head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <div class="card" style="width: 18rem;">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DetalleArt.aspx.cs" Inherits="CarritoWeb.DetalleArt" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+      <div class="card" style="width: 18rem;">
         <img  src="<% = articulo.ImagenUrl %>" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title"  ><% =articulo.Nombre %></h5>
@@ -20,7 +15,4 @@
             <a href="Default.aspx?" class="card-link">Volver</a>
         </div>
     </div>
-</head>
-<body>
-</body>
-</html>
+</asp:Content>
