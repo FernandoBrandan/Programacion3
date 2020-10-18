@@ -37,7 +37,7 @@ namespace CarritoWeb
             NegocioArticulo BuscarArticulo = new NegocioArticulo();
             Busqueda = BuscarArticulo.ListarArticulos();
 
-            int articuloSeleccionado = Convert.ToInt32(Request.QueryString["idAr"]);
+            int articuloSeleccionado = Convert.ToInt32(Request.QueryString["idAgregarCarrito"]);
 
             if (articuloSeleccionado != 0)
             {
@@ -51,12 +51,9 @@ namespace CarritoWeb
 
                 AgregarFila((DataTable)Session["Carrito"], Lista.Nombre, (int)Lista.Precio);
 
-               
             }
             dvListado.DataSource = (DataTable)Session["Carrito"];
             dvListado.DataBind();
-
-
 
         }
     }
