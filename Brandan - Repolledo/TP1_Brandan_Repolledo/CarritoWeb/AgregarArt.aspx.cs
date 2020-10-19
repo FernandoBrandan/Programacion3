@@ -42,9 +42,7 @@ namespace CarritoWeb
             dr["id"] = id;
             dr["Nombre"] = nombre;
             dr["Precio"] = precio;
-            
-
-
+          
             tabla.Rows.Add(dr);
         }
 
@@ -59,10 +57,14 @@ namespace CarritoWeb
                 }
             }
         }
-        public int sumarTotal(DataTable tabla, int precio)
+        public int sumarTotal(DataTable tabla)
         {
             var total = 0;
-            total = +precio;   
+            for (int i = tabla.Rows.Count - 1; i >= 0; i--)
+            {
+                DataRow dt = tabla.Rows[i];
+                total += Convert.ToInt32(dt["Precio"]);
+            }
             return total;
         }
 
@@ -79,13 +81,12 @@ namespace CarritoWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            NegocioArticulo BuscarArticulo = new NegocioArticulo();
+            Busqueda = BuscarArticulo.ListarArticulos();
+
             try
             {
-              
-                NegocioArticulo BuscarArticulo = new NegocioArticulo();
-                Busqueda = BuscarArticulo.ListarArticulos();
-                
-
 
                 int articuloSeleccionado = Convert.ToInt32(Request.QueryString["idAgregarCarrito"]);
 
@@ -101,27 +102,21 @@ namespace CarritoWeb
                     }
                     AgregarFila((DataTable)Session["Carrito"], Lista.Nombre, (int)Lista.Precio, Lista.ID);
 
-                    total +=(int)Lista.Precio;
+
+                    total += sumarTotal((DataTable)Session["Carrito"]);
                     Lbltotal.Text = total.ToString();
-
-
 
                     dvListado.DataSource = (DataTable)Session["Carrito"];
                     dvListado.DataBind();
-
                 }
+
+
             }
             catch (Exception ex)
             {
                 Session["Error" + Session.SessionID] = ex;
                 Response.Redirect("Error.aspx");
             }
-
-
-
-
-
-
         }
     }
 }
