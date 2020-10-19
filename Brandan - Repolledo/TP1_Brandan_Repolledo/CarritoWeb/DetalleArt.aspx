@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DetalleArt.aspx.cs" Inherits="CarritoWeb.DetalleArt" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-      <div class="card" style="width: 18rem;">
+      <div  class="card" style="width: 18rem;">
         <img  src="<% = articulo.ImagenUrl %>" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title"  ><% =articulo.Nombre %></h5>
