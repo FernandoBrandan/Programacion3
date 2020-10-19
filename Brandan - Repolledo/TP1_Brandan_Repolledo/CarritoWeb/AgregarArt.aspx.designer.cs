@@ -24,6 +24,24 @@ namespace CarritoWeb
         protected global::System.Web.UI.WebControls.GridView dvListado;
 
         /// <summary>
+        /// Control ideliminar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ideliminar;
+
+        /// <summary>
+        /// Control EliminarArticulos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button EliminarArticulos;
+
+        /// <summary>
         /// Control Lbltotal.
         /// </summary>
         /// <remarks>

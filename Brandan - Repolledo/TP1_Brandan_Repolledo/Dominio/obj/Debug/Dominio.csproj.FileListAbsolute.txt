@@ -16,3 +16,9 @@ C:\Users\wendy\Documents\git\Programacion3\Brandan - Repolledo\TP1_Brandan_Repol
 C:\Users\wendy\Documents\git\Programacion3\Brandan - Repolledo\TP1_Brandan_Repolledo\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\wendy\Documents\git\Programacion3\Brandan - Repolledo\TP1_Brandan_Repolledo\Dominio\obj\Debug\Dominio.dll
 C:\Users\wendy\Documents\git\Programacion3\Brandan - Repolledo\TP1_Brandan_Repolledo\Dominio\obj\Debug\Dominio.pdb
+C:\Users\wendy\Desktop\git\Programacion3\Brandan - Repolledo\TP1_Brandan_Repolledo\Dominio\bin\Debug\Dominio.dll
+C:\Users\wendy\Desktop\git\Programacion3\Brandan - Repolledo\TP1_Brandan_Repolledo\Dominio\bin\Debug\Dominio.pdb
+C:\Users\wendy\Desktop\git\Programacion3\Brandan - Repolledo\TP1_Brandan_Repolledo\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\wendy\Desktop\git\Programacion3\Brandan - Repolledo\TP1_Brandan_Repolledo\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\wendy\Desktop\git\Programacion3\Brandan - Repolledo\TP1_Brandan_Repolledo\Dominio\obj\Debug\Dominio.dll
+C:\Users\wendy\Desktop\git\Programacion3\Brandan - Repolledo\TP1_Brandan_Repolledo\Dominio\obj\Debug\Dominio.pdb

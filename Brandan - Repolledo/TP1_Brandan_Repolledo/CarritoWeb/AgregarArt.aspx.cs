@@ -37,7 +37,6 @@ namespace CarritoWeb
 
         public void AgregarFila(DataTable tabla, string nombre, int precio, int id)
         {
-            
             DataRow dr = tabla.NewRow();
             dr["id"] = id;
             dr["Nombre"] = nombre;
@@ -70,10 +69,10 @@ namespace CarritoWeb
 
 
         protected void btnEliminarArticulo_Click(object sender, EventArgs e)
-        {/*
+        {
+            
             EliminarFila((DataTable)Session["Carrito"], Convert.ToInt32(ideliminar.Text));
             Response.Redirect("AgregarArt.aspx");
-            */
         }
 
 
@@ -81,7 +80,6 @@ namespace CarritoWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             NegocioArticulo BuscarArticulo = new NegocioArticulo();
             Busqueda = BuscarArticulo.ListarArticulos();
 
@@ -101,16 +99,11 @@ namespace CarritoWeb
                         Session["Carrito"] = CrearTabla();
                     }
                     AgregarFila((DataTable)Session["Carrito"], Lista.Nombre, (int)Lista.Precio, Lista.ID);
-
-
+                }
                     total += sumarTotal((DataTable)Session["Carrito"]);
                     Lbltotal.Text = total.ToString();
-
                     dvListado.DataSource = (DataTable)Session["Carrito"];
                     dvListado.DataBind();
-                }
-
-
             }
             catch (Exception ex)
             {
