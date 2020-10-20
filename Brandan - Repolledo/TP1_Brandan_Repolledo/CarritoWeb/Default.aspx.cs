@@ -23,16 +23,11 @@ namespace CarritoWeb
                 ListadeArticulos = negocio.ListarArticulos();
                 Session[Session.SessionID + "ListadeArticulos"] = ListadeArticulos; // Se guarda la lista
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Session["Error" + Session.SessionID] = ex;
                 Response.Redirect("Error.aspx");
-            }
-
-        }
-
-
-      
-
-     
+            }            
+        }     
     }
 } 

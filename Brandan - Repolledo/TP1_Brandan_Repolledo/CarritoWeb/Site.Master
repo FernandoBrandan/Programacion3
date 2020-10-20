@@ -24,7 +24,7 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
-<body>
+<body  style="background-color: cadetblue">
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -60,7 +60,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Nuestra primera aplicacion ASP.NET</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Trabajo Practico 4 - Programacion III - ASP.NET</p>
             </footer>
         </div>
 

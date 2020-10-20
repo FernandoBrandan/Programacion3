@@ -1,6 +1,5 @@
-﻿
-
-using System;
+﻿using System;
+using System.Threading;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -12,8 +11,6 @@ using System.Web.UI.WebControls;
 using Dominio;
 using Negocio;
 
-
-
 namespace CarritoWeb
 {
     public partial class AgregarArt : System.Web.UI.Page
@@ -22,26 +19,23 @@ namespace CarritoWeb
         public List<Articulo> Busqueda;
         int total = 0;
 
-
         public DataTable CrearTabla()
         {
             DataTable dt = new DataTable();
-          
             dt.Columns.Add("ID");
             dt.Columns.Add("NOMBRE");
+            dt.Columns.Add("DESCRIPCION");
             dt.Columns.Add("PRECIO");
-            dt.Columns.Add("CANTIDAD");
-
             return dt;
         }
 
-        public void AgregarFila(DataTable tabla, string nombre, int precio, int id)
+        public void AgregarFila(DataTable tabla, string nombre, string descripcion, int precio, int id)
         {
             DataRow dr = tabla.NewRow();
             dr["id"] = id;
             dr["Nombre"] = nombre;
-            dr["Precio"] = precio;
-          
+            dr["Descripcion"] = descripcion;
+            dr["Precio"] = precio;          
             tabla.Rows.Add(dr);
         }
 
@@ -53,30 +47,41 @@ namespace CarritoWeb
                 if (Convert.ToInt32(dt["id"]) == id)
                 {
                     dt.Delete();
+                    Response.Redirect("AgregarArt.aspx");
+                }
+            }  
+        }
+
+        public int sumarTotal(DataTable tabla)
+         {
+            var total = 0;
+
+            if (tabla != null && tabla.Rows.Count > 0)
+            {
+                for (int i = tabla.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataRow dt = tabla.Rows[i];
+                    total += Convert.ToInt32(dt["Precio"]);
                 }
             }
-        }
-        public int sumarTotal(DataTable tabla)
-        {
-            var total = 0;
-            for (int i = tabla.Rows.Count - 1; i >= 0; i--)
+            else
             {
-                DataRow dt = tabla.Rows[i];
-                total += Convert.ToInt32(dt["Precio"]);
+                Response.Write("<script LANGUAGE='JavaScript' >alert('Carrito vacio. Por favor, seleccionar elementos')</script>");
             }
             return total;
         }
 
-
         protected void btnEliminarArticulo_Click(object sender, EventArgs e)
         {
-            
-            EliminarFila((DataTable)Session["Carrito"], Convert.ToInt32(ideliminar.Text));
-            Response.Redirect("AgregarArt.aspx");
+            try
+            {
+                EliminarFila((DataTable)Session["Carrito"], Convert.ToInt32(ideliminar.Text));
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script LANGUAGE='JavaScript' >alert('Carrito vacio. Por favor, seleccionar elementos')</script>");
+            }
         }
-
-
-
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -85,9 +90,7 @@ namespace CarritoWeb
 
             try
             {
-
                 int articuloSeleccionado = Convert.ToInt32(Request.QueryString["idAgregarCarrito"]);
-
                 if (articuloSeleccionado != 0)
                 {
                     Lista = Busqueda.Find(x => x.ID == articuloSeleccionado);
@@ -98,18 +101,40 @@ namespace CarritoWeb
                         CrearTabla();
                         Session["Carrito"] = CrearTabla();
                     }
-                    AgregarFila((DataTable)Session["Carrito"], Lista.Nombre, (int)Lista.Precio, Lista.ID);
+                    AgregarFila((DataTable)Session["Carrito"], Lista.Nombre, Lista.Descripcion, (int)Lista.Precio, Lista.ID);
                 }
-                    total += sumarTotal((DataTable)Session["Carrito"]);
-                    Lbltotal.Text = total.ToString();
-                    dvListado.DataSource = (DataTable)Session["Carrito"];
-                    dvListado.DataBind();
+
+                total += sumarTotal((DataTable)Session["Carrito"]);
+                Lbltotal.Text = total.ToString();
+                dvListado.DataSource = (DataTable)Session["Carrito"];
+                dvListado.DataBind();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Session["Error" + Session.SessionID] = ex;
-                Response.Redirect("Error.aspx");
+                Response.Write("<script LANGUAGE='JavaScript' >alert('Se genero un error')</script>");
             }
+        }
+
+        protected void btnEliminarTodo_Click(object sender, EventArgs e)
+        {
+
+            int TotalVacio = 0;
+            Session["Carrito"] = null;
+            Lbltotal.Text = TotalVacio.ToString();
+            dvListado.DataSource = (DataTable)Session["Tabla"];
+            dvListado.DataBind();
+            Response.Write("<script LANGUAGE='JavaScript' >alert('Se vacio el Carrito')</script>");
+            
+        }
+
+        protected void btnPagar_Click(object sender, EventArgs e)
+        {
+            int TotalVacio = 0;
+            Session["Carrito"] = null;
+            Lbltotal.Text = TotalVacio.ToString();
+            dvListado.DataSource = (DataTable)Session["Tabla"];
+            dvListado.DataBind();
+            Response.Redirect("About.aspx");
         }
     }
 }
