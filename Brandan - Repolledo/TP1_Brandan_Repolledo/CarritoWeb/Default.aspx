@@ -7,6 +7,22 @@
         <p class="lead">Bienvenidos a la tienda mas grande de zona Norte</p>
     </div>
     
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li>
+                <asp:TextBox ID="tbxCodigo" class="form-control" placeholder="Filtrar por código..." runat="server"></asp:TextBox>
+            </li>
+            <li>
+                <asp:TextBox ID="tbxNombre" class="form-control" placeholder="Filtrar por Nombre..." runat="server"></asp:TextBox>
+            </li>
+            <li>
+                <asp:TextBox ID="tbxDescripcion" class="form-control" placeholder="Filtrar por descripcion..." runat="server"></asp:TextBox>
+            </li>
+
+        </ul>
+    </div>
+
+    
 
         <div class="container">
     <div class="row">
