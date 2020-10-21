@@ -9,7 +9,7 @@
     
 
         <div class="container">
-    <div class="row">
+         <div class="row">
             <div class="card-columns">
                 <%foreach (Dominio.Articulo item in ListadeArticulos)
                     {%>
