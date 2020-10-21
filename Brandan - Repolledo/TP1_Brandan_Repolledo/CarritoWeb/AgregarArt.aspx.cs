@@ -96,31 +96,32 @@ namespace CarritoWeb
 
             try
             {
-                if (IsPostBack==false)
+                articuloSeleccionado = Convert.ToInt32(Request.QueryString["idAgregarCarrito"]);
+                if (articuloSeleccionado != 0)
                 {
-                    articuloSeleccionado = Convert.ToInt32(Request.QueryString["idAgregarCarrito"]);
-                    if (articuloSeleccionado != 0)
+                    Lista = Busqueda.Find(x => x.ID == articuloSeleccionado);
+
+                    if (Session["Carrito"] == null)
                     {
-                        Lista = Busqueda.Find(x => x.ID == articuloSeleccionado);
-
-                        if (Session["Carrito"] == null)
-                        {
-                            total = 0;
-                            CrearTabla();
-                            Session["Carrito"] = CrearTabla();
-                        }
-                        AgregarFila((DataTable)Session["Carrito"], Lista.Nombre, Lista.Descripcion, (int)Lista.Precio, Lista.ID);
+                        total = 0;
+                        CrearTabla();
+                        Session["Carrito"] = CrearTabla();
                     }
+                    AgregarFila((DataTable)Session["Carrito"], Lista.Nombre, Lista.Descripcion, (int)Lista.Precio, Lista.ID);
 
-                    total += sumarTotal((DataTable)Session["Carrito"]);
-                    Lbltotal.Text = total.ToString();
-                    dvListado.DataSource = (DataTable)Session["Carrito"];
-                    dvListado.DataBind();
-                }              
+                }
+                
+                total += sumarTotal((DataTable)Session["Carrito"]);
+                Lbltotal.Text = total.ToString();
+                dvListado.DataSource = (DataTable)Session["Carrito"];
+                dvListado.DataBind();
+
+                // eliminamos
+                //Request.QueryString.Remove("idAgregarCarrito");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Response.Write("<script LANGUAGE='JavaScript' >alert('Se genero un error')</script>");
+                Response.Write("<script LANGUAGE='JavaScript' >alert('Se genero un error'" + ex +")</script>");
             }
         }
 
