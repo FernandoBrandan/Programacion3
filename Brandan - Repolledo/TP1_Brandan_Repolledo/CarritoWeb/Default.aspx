@@ -6,7 +6,6 @@
         <h1>TECH STORE</h1>
         <p class="lead">Bienvenidos a la tienda mas grande de zona Norte</p>
     </div>
-
     <div class="container">
         <div class="row">
             <asp:TextBox ID="tbxBuscar" placeholder="Buscar" runat="server" Style="align-content: center ; margin: 20px; margin-left: 0px; width: 200px; height: 50px" OnTextChanged="Busar_TextChanged" />
