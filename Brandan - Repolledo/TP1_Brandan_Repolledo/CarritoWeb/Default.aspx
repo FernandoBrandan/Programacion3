@@ -6,13 +6,14 @@
         <h1>TECH STORE</h1>
         <p class="lead">Bienvenidos a la tienda mas grande de zona Norte</p>
     </div>
+    
 
-    <div class="row">
         <div class="container">
+    <div class="row">
             <div class="card-columns">
                 <%foreach (Dominio.Articulo item in ListadeArticulos)
                     {%>
-                <div class="card" style="width: 28rem;">
+                <div class="card" style="width: 28rem; background-color:  lightgray">
                     <img src="<% = item.ImagenUrl%>" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title"><% =item.Nombre  %></h5>
